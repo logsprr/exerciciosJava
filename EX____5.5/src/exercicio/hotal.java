@@ -22,68 +22,74 @@ public class hotal {
     String[][] hotel = new String [5][10];
     int i,k;
     String contq  = "";
+    int resp;
     
     void menu(){
         Object[] opcoes = { "Imprimir lista de quartos", "Definir ocupação",
                 "Sair" };
-        
-        JPanel panel = new JPanel();
-        panel.add(new JLabel("Hotel de Gabriel"));
-        int result = JOptionPane.showOptionDialog(null, panel, "Hotel",
-                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, opcoes, null);
-        if(opcoes.equals("Imprimir lista de quartos")){
-            imprimeLista();
-        }
-        else if(opcoes.equals("Definir ocupação")){
-            defocupaçao();
-        }
-        else{
-            
-        }
-    }
-    
-    void imprimeLista(){
         for(i=0;i<5;i++){
             for(k=0;k<10;k++){
                 hotel[i][k] = "desocupado";
             }
         }
-        for(i=0;i<5;i++){
-            for(k=0;k<10;k++){
-                JOptionPane.showMessageDialog(null,"Andar" +hotel[i]+"\n" 
-                    + "Quarto" +hotel[k]);
+        int result;
+        do{
+            JPanel panel = new JPanel();
+            panel.add(new JLabel("Hotel de Gabriel"));
+            result = JOptionPane.showOptionDialog(null, panel, "Hotel",
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, opcoes, null);
+            if(opcoes[result].equals("Imprimir lista de quartos")){
+                imprimeLista();
             }
+            else if(opcoes[result].equals("Definir ocupação")){
+                defocupaçao();
+            }
+        } while(result !=2);
+    }
+    
+    void imprimeLista(){
+        contq = "";
+            for(k=0;k<10;k++){
+                if(k==9){
+                    contq+=   "Andar: 01 Quarto: "+(k+1)+" - "+hotel[0][k]+"    |    "
+                            + "Andar: 02 Quarto: "+(k+1)+" - "+hotel[1][k]+"    |    "
+                            + "Andar: 03 Quarto: "+(k+1)+" - "+hotel[2][k]+"    |    "
+                            + "Andar: 04 Quarto: "+(k+1)+" - "+hotel[3][k]+"    |    "
+                            + "Andar: 05 Quarto: "+(k+1)+" - "+hotel[4][k]+"\n";
+                } else{
+                contq+=   "Andar: 01 Quarto: 0"+(k+1)+" - "+hotel[0][k]+"    |    "
+                        + "Andar: 02 Quarto: 0"+(k+1)+" - "+hotel[1][k]+"    |    "
+                        + "Andar: 03 Quarto: 0"+(k+1)+" - "+hotel[2][k]+"    |    "
+                        + "Andar: 04 Quarto: 0"+(k+1)+" - "+hotel[3][k]+"    |    "
+                        + "Andar: 05 Quarto: 0"+(k+1)+" - "+hotel[4][k]+"\n";
+                }
         }
+        JOptionPane.showMessageDialog(null, contq);
     }
     
     void defocupaçao(){
-        int posicaoquarto =0;
-        int posicaoandar = 0;
-        JOptionPane.showConfirmDialog(null, "Digite para ocupar um quarto: "
-                + "Andar de 0 a 4"
-                + "Qaurtos de 0 a 9");
-        posicaoandar = Integer.parseInt(JOptionPane.showInputDialog("Andar :"));
-        posicaoquarto = Integer.parseInt(JOptionPane.showInputDialog("Quarto: "));
-        
-        for(i=0;i<5;i++){
-            for(k=0;k<10;k++){
-                if(hotel[i][k] ==  hotel[posicaoandar][posicaoquarto]){
-                    if(hotel[i]>5 && hotel[k]>10){
-                        JOptionPane.showMessageDialog(null,"Nao existe");
-                    }
-                    else if(hotel[i][k].equals("desocupado")){
-                        hotel[posicaoandar][posicaoquarto] = "ocupado";
-                        JOptionPane.showMessageDialog(null,"Ocupado 20 reais");
-                        break;
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Ja esta ocupado");
-                        break;
-                    }
+        int posicaoquarto;
+        int posicaoandar ;
+        resp = JOptionPane.showConfirmDialog(null, "Digite para ocupar um quarto: "
+                + "Andar de 1 a 5 "
+                + "Quartos de 1 a 10");
+        if(resp == JOptionPane.YES_OPTION){
+            posicaoandar = Integer.parseInt(JOptionPane.showInputDialog("Andar :"));
+            posicaoquarto = Integer.parseInt(JOptionPane.showInputDialog("Quarto: "));
+            posicaoandar-=1;
+            posicaoquarto-=1;
+            if(posicaoandar>5 || posicaoquarto>10){
+                JOptionPane.showMessageDialog(null,"Nao existe");
+            }
+            else if(hotel[posicaoandar][posicaoquarto].equals("desocupado")){
+                    hotel[posicaoandar][posicaoquarto] = "ocupado       ";
+                    JOptionPane.showMessageDialog(null,"Ocupado 20 reais");
                 }
-                
+            else{
+                JOptionPane.showMessageDialog(null,"Ja esta ocupado");
             }
         }
+        
     }
 }

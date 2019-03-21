@@ -27,17 +27,16 @@ public class senha {
     }
     
     void confereSenha(){
-        int cont = 0;
+        int cont = 1;
         entradaSenha();
-        for(int i=0;i<3;i++){
-            cont =1;
+        for(int i=0;i<4;i++){
             if(senha.equals(padraosenha)){
                 JOptionPane.showMessageDialog(null,"Senha Valida");
                 break;
             }
             else{
                 cont++;
-                if(cont==3){
+                if(cont==4){
                     JOptionPane.showMessageDialog(null,"Perdeu Cartao Cancelado");
                     break;
                 }

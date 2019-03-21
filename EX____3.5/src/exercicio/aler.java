@@ -15,15 +15,18 @@ public class aler {
     int numeros[][] = new int[50][20];
     String aux = "";
     int numero2;
+    int i,k;
     void sorteia(){
-        for(int i=0; i<50;i++){
-            for(int j=0;i<20;i++){
-                aux = JOptionPane.showInputDialog("Digite um numero para ser pesquisado no Array:");
-                numero2 = Integer.parseInt(aux);
-                
-                numeros[i][j] = (int) (Math.random() * 1000);
-                
-                if(numero2==numeros[i][j]){
+        for(i=0; i<50;i++){
+            for(k=0;k<20;k++){
+                numeros[i][k] = (int) (Math.random() * 1000);
+            }
+        }
+        aux = JOptionPane.showInputDialog("Digite um numero para ser pesquisado no Array:");
+        numero2 = Integer.parseInt(aux);
+        for(i=0; i<50;i++){
+            for(k=0;k<20;k++){
+                if(numero2==numeros[i][k]){
                     JOptionPane.showMessageDialog(null,"O numero existe no aray");
                     break;
                 }

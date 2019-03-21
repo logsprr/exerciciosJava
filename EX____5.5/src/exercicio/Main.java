@@ -5,8 +5,6 @@
  */
 package exercicio;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Gabriel
@@ -17,14 +15,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        aler busca;
-        busca = new aler();
-        try{
-            busca.sorteia();
-        }
-        catch(NumberFormatException erro){
-            JOptionPane.showMessageDialog(null,"Digite so numeros" + erro.toString());
-        }
+        hotal hotel;
+        hotel = new hotal();
+        
+        hotel.menu();
+        
     }
     
 }

@@ -60,6 +60,9 @@ public class hotal {
     void defocupaçao(){
         int posicaoquarto =0;
         int posicaoandar = 0;
+        JOptionPane.showConfirmDialog(null, "Digite para ocupar um quarto: "
+                + "Andar de 0 a 4"
+                + "Qaurtos de 0 a 9");
         posicaoandar = Integer.parseInt(JOptionPane.showInputDialog("Andar :"));
         posicaoquarto = Integer.parseInt(JOptionPane.showInputDialog("Quarto: "));
         

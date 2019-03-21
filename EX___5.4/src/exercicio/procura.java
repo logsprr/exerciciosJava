@@ -14,22 +14,24 @@ import javax.swing.JOptionPane;
 public class procura {
     String palavra = "";
     String frase = "";
-    
-    
+   
     void search(){
         frase = JOptionPane.showInputDialog("Digite uma frase :");
         palavra = JOptionPane.showInputDialog("Digite uma palavra:");
         int cont=0;
-        do{
-            if(frase.equals(palavra)){
-                cont++;
-                JOptionPane.showMessageDialog(null,"Frase fornecida : " + frase
-                        + "Palavra fornecida : " + palavra 
-                        + "Quantidades de ocorrências : "  + cont);
+        int cont2=0;
+        String sfrase[] = frase.split(" ");
+        for(int i=0; i<sfrase.length;i++){
+            if(sfrase[i].equals(palavra)){
+               cont++;
             }
             else{
-                JOptionPane.showMessageDialog(null,"Não tem a palavra que você digitou na frase :!!");
+                cont2++;
             }
-        }while(cont!=0);
+        }
+        JOptionPane.showMessageDialog(null,"Frase fornecida : " + frase+"\n"
+                        + "Palavra fornecida : " + palavra+"\n"
+                        + "Quantidades de ocorrências positivas : "  + cont+"\n"     //postivas sao que aparecem na frase 
+                        + "Quantidades de ocorrências negativas : "  + cont2);  // negativas que nao aparecem 
     }
 }
